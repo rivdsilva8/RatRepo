@@ -9,3 +9,76 @@
   margin: 0 !important;
   padding: 0 !important;
 }
+
+.tooltip-vertical .leaflet-tooltip-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 200px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(41 37 36 / var(--tw-bg-opacity, 1));
+  font-size: 12px;
+}
+
+/* Style for tooltip background */
+.custom-tooltip {
+  background-color: #292524 !important; /* This is equivalent to bg-stone-800 */
+  border-radius: 4px;
+  border: none !important; /* Removes default border */
+  box-shadow: none !important; /* Removes any shadow if present */
+  padding: 8px; /* Optional: for better padding */
+}
+
+.tooltip-content {
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  align-items: flex-start;
+  max-width: 200px;
+  padding: 5px;
+}
+/* Remove any default tooltip styling */
+.leaflet-tooltip {
+  background-color: #292524 !important; /* This is equivalent to bg-stone-800 */
+  border-radius: 4px;
+  border: none !important; /* Removes default border */
+  box-shadow: none !important; /* Removes any shadow if present */
+  padding: 8px; /* Optional: for better padding */
+}
+
+/* Style the tooltip background */
+.leaflet-tooltip {
+  background-color: #292524 !important; /* This matches the bg-stone-800 color */
+  border-radius: 4px;
+  border: none !important; /* Removes default border */
+  box-shadow: none !important; /* Removes any shadow */
+  padding: 8px; /* Optional: for better padding */
+  font-size: 12px;
+}
+
+/* Style the tooltip triangle */
+.leaflet-tooltip::after {
+  border-top-color: #292524 !important; /* Matches tooltip background color */
+  border-left-color: transparent !important;
+  border-right-color: transparent !important;
+  border-bottom-color: transparent !important;
+}
+
+/* Ensure the tooltip arrow is not visible on other sides */
+.leaflet-tooltip-inner {
+  background-color: transparent !important; /* Prevents any background color leaks */
+}
+
+/* Custom style for the tooltip triangle */
+.leaflet-tooltip .leaflet-tooltip-arrow {
+  background-color: #292524 !important; /* Equivalent to bg-stone-800 */
+}
+
+/* Ensure the rest of the tooltip has the right styling */
+.leaflet-tooltip-inner {
+  background-color: #292524 !important; /* Ensure background is stone color */
+  color: white !important; /* Make text color white */
+}
+
+body {
+  background-color: #292524 !important;
+}

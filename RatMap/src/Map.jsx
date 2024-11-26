@@ -1,8 +1,16 @@
 import { useState } from "react";
-import { MapContainer, TileLayer, Marker, useMap, Popup } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  useMap,
+  Tooltip,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import data from "./ratSightings";
 import L from "leaflet";
+import "./input.css";
+import Table from "./Table";
 
 console.log(data);
 // Coordinates for boroughs
@@ -36,7 +44,7 @@ const icons = {
     </div>
   `,
     iconSize: [18, 18],
-    iconAnchor: [9, 9], // Centers the icon
+    // Centers the icon
   }),
   med: L.divIcon({
     className: "leaflet-div-icon",
@@ -58,7 +66,7 @@ const icons = {
     </div>
   `,
     iconSize: [18, 18],
-    iconAnchor: [9, 9], // Centers the icon
+    // Centers the icon
   }),
   high: L.divIcon({
     className: "leaflet-div-icon",
@@ -80,7 +88,7 @@ const icons = {
     </div>
   `,
     iconSize: [18, 18],
-    iconAnchor: [9, 9], // Centers the icon
+    // Centers the icon
   }),
 };
 
@@ -165,9 +173,25 @@ const Map = () => {
             key={index}
             position={[sighting.Latitude, sighting.Longitude]}
             icon={icons[sighting.Rat_Sighting_Chances.toLowerCase()]}
-          ></Marker>
+            className="bg-stone-800"
+          >
+            {" "}
+            <Tooltip direction="top" opacity={1} className="custom-tooltip">
+              <div className="tooltip-content bg-stone-800 text-white">
+                <span>
+                  <strong>Zip Code : </strong>
+                  {sighting["Incident Zip"]}
+                </span>
+                <span>
+                  <strong>Sighting Count : </strong>
+                  {sighting?.Sighting_Count}
+                </span>
+              </div>
+            </Tooltip>
+          </Marker>
         ))}
       </MapContainer>
+      <Table filteredData={filteredData} />
     </div>
   );
 };
